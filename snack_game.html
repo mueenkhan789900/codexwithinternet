@@ -35,7 +35,8 @@
         
         function gameLoop() {
             const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-            if(head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount || snake.some(p => p.x === head.x && p.y === head.y)) {
+            if(head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount ||
+               snake.some((p, i) => i !== 0 && p.x === head.x && p.y === head.y)) {
                 alert('Game over! Score: ' + score);
                 snake = [{x: 10, y: 10}];
                 dx = dy = 0;
