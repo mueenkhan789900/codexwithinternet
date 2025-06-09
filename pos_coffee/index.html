@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee POS</title>
+    <style>
+        body {font-family: Arial, sans-serif; padding: 20px;}
+        .menu {margin-bottom: 20px;}
+        .menu button {margin: 5px;}
+        #cart {margin-top: 20px;}
+    </style>
+</head>
+<body>
+    <h1>Coffee POS</h1>
+    <div class="menu">
+        <button onclick="addItem('Espresso', 3.00)">Espresso $3</button>
+        <button onclick="addItem('Latte', 4.00)">Latte $4</button>
+        <button onclick="addItem('Cappuccino', 4.50)">Cappuccino $4.50</button>
+        <button onclick="addItem('Americano', 2.50)">Americano $2.50</button>
+    </div>
+    <div id="cart"></div>
+    <script>
+        const cart = [];
+
+        function addItem(name, price) {
+            cart.push({name, price});
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartDiv = document.getElementById('cart');
+            let html = '<h2>Cart</h2>';
+            let total = 0;
+            if (cart.length === 0) {
+                html += '<p>No items.</p>';
+            } else {
+                html += '<ul>';
+                cart.forEach(item => {
+                    html += `<li>${item.name} - $${item.price.toFixed(2)}</li>`;
+                    total += item.price;
+                });
+                html += '</ul>';
+                html += `<p><strong>Total: $${total.toFixed(2)}</strong></p>`;
+            }
+            cartDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
