@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Sticky Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { margin:0; font-family:'Poppins', sans-serif; }
+        .navbar {
+            position:sticky;
+            top:0;
+            width:100%;
+            background:#fff;
+            box-shadow:0 2px 4px rgba(0,0,0,0.1);
+            z-index:1000;
+        }
+        .nav-inner {
+            max-width:1200px;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0.5rem 1rem;
+        }
+        .logo a {
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.25rem;
+            color:#333;
+        }
+        #menu-toggle,
+        #categories-toggle {
+            display:none;
+        }
+        .hamburger {
+            display:none;
+            width:24px;
+            height:18px;
+            position:relative;
+            cursor:pointer;
+        }
+        .hamburger span,
+        .hamburger span:before,
+        .hamburger span:after {
+            position:absolute;
+            left:0;
+            width:100%;
+            height:2px;
+            background:#333;
+            transition:0.3s;
+            content:'';
+        }
+        .hamburger span { top:8px; }
+        .hamburger span:before { top:0; }
+        .hamburger span:after { bottom:0; }
+
+        #menu-toggle:checked + label span { background:transparent; }
+        #menu-toggle:checked + label span:before { transform:rotate(45deg); top:8px; }
+        #menu-toggle:checked + label span:after { transform:rotate(-45deg); bottom:8px; }
+        nav ul {
+            list-style:none;
+            display:flex;
+            margin:0;
+            padding:0;
+            align-items:center;
+        }
+        nav li {
+            position:relative;
+        }
+        nav a {
+            display:block;
+            padding:0.75rem 1rem;
+            text-decoration:none;
+            color:#333;
+            transition:color 0.3s;
+        }
+        nav li.active > a,
+        nav a:hover {
+            color:#0077cc;
+        }
+        .dropdown-menu {
+            display:none;
+            position:absolute;
+            left:0;
+            top:100%;
+            background:#fff;
+            box-shadow:0 2px 4px rgba(0,0,0,0.1);
+            min-width:150px;
+            z-index:1000;
+        }
+        .dropdown-menu li a { padding:0.5rem 1rem; }
+        nav li.dropdown:hover .dropdown-menu {
+            display:block;
+        }
+        nav li.icon a {
+            padding:0.75rem;
+            font-size:1.1rem;
+        }
+        /* Mobile */
+        @media(max-width:768px){
+            .hamburger { display:flex; }
+            nav {
+                position:fixed;
+                top:0;
+                left:0;
+                width:100%;
+                background:#fff;
+                flex-direction:column;
+                transform:translateY(-100%);
+                transition:transform 0.3s ease;
+                box-shadow:0 2px 4px rgba(0,0,0,0.1);
+            }
+            nav ul { flex-direction:column; }
+            nav li { width:100%; }
+            nav a { padding:1rem; }
+            #menu-toggle:checked + label + nav { transform:translateY(0); }
+            nav li.dropdown:hover .dropdown-menu { display:none; }
+            nav li.dropdown label {
+                display:block;
+                padding:0.75rem 1rem;
+                cursor:pointer;
+            }
+            nav li.dropdown input:checked + label + a + .dropdown-menu { display:block; }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo"><a href="#">TechBlog</a></div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger"><span></span></label>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li class="dropdown">
+                        <input type="checkbox" id="categories-toggle">
+                        <label for="categories-toggle" class="mobile-toggle"></label>
+                        <a href="#">Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tech</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="icon"><a href="#"><i class="fas fa-search"></i></a></li>
+                    <li class="icon"><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main style="padding:120px 1rem;">
+        <p>Scroll to see sticky effect...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut ante at quam interdum venenatis. Proin venenatis purus in finibus aliquet. Suspendisse sit amet magna ut turpis egestas tincidunt. Morbi vitae lacus ut ante bibendum lobortis. Integer ac massa a turpis malesuada volutpat. Etiam malesuada leo non libero varius fermentum. Quisque ultricies elit vitae odio ultricies, ut ullamcorper sem bibendum. Integer mattis risus at lorem bibendum, nec gravida est dignissim. Nulla facilisi. Vestibulum imperdiet turpis in dolor mollis congue. Sed sit amet nunc id ante blandit commodo.</p>
+        <p>More content...</p>
+    </main>
+</body>
+</html>
